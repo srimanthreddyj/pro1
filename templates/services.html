@@ -1,0 +1,164 @@
+{% extends "base2.html" %}
+{% block title %}Services{% endblock title %}
+{% block css %}
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: rgb(65, 105, 225);
+        color: white;
+    }
+
+    button {
+        background-color: rgb(169, 169, 169);
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    #cart {
+        margin-top: 20px;
+        position: relative;
+    }
+
+    #cart table {
+        width: 50%;
+    }
+
+    #cart th, #cart td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    /* Highlighted amount at top right */
+    #total-highlight {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px;
+        background-color: rgb(65, 105, 225);
+        color: white;
+        border-radius: 4px;
+    }
+</style>
+{% endblock css %}
+{% block body %}
+<h2>Supermarket Items</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Add to Cart</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Vegetable Oil</td>
+            <td>$10.00</td>
+            <td><button onclick="addToCart('Vegetable Oil', 10.00)">Add</button></td>
+        </tr>
+        <tr>
+            <td>Salt</td>
+            <td>$2.00</td>
+            <td><button onclick="addToCart('Salt', 2.00)">Add</button></td>
+        </tr>
+        <tr>
+            <td>Yogurt</td>
+            <td>$8.00</td>
+            <td><button onclick="addToCart('Yogurt', 8.00)">Add</button></td>
+        </tr>
+        <tr>
+            <td>Bread</td>
+            <td>$10.00</td>
+            <td><button onclick="addToCart('Bread', 10.00)">Add</button></td>
+        </tr>
+        <tr>
+            <td>Apple</td>
+            <td>$15.00</td>
+            <td><button onclick="addToCart('Apple', 15.00)">Add</button></td>
+        </tr>
+        <!-- Add more items here -->
+    </tbody>
+</table>
+
+<div id="cart">
+    <h2>Shopping Cart</h2>
+    <div id="total-highlight">Total: $<span id="total-price">0.00</span></div>
+    <table>
+        <thead>
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Barcode</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody id="cart-items">
+            <!-- Cart items will be displayed here -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    let cartItems = [];
+    let totalPrice = 0;
+
+    function addToCart(item, price) {
+        const barcode = generateBarcode();
+        cartItems.push({ item, price, barcode });
+        totalPrice += price;
+
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const totalElement = document.getElementById('total-price');
+
+        // Clear previous items
+        cartItemsContainer.innerHTML = '';
+
+        // Populate the cart table
+        cartItems.forEach(({ item, price, barcode }, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${item}</td>
+                <td>$${price.toFixed(2)}</td>
+                <td>${barcode}</td>
+                <td><button onclick="removeFromCart(${index})">Remove</button></td>
+            `;
+            cartItemsContainer.appendChild(row);
+        });
+
+        // Update the total price
+        totalElement.textContent = totalPrice.toFixed(2);
+    }
+
+    function removeFromCart(index) {
+        const removedItem = cartItems.splice(index, 1)[0];
+        totalPrice -= removedItem.price;
+
+        updateCart();
+    }
+
+    function generateBarcode() {
+        // This is a simple representation; in a real-world scenario, use a more sophisticated approach
+        return Math.floor(Math.random() * 100000000 ).toString();
+    }
+</script>
+{% endblock body %}

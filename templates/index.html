@@ -1,0 +1,97 @@
+{% extends "base2.html" %}
+
+{% block css %}
+    {{ block.super }}
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .hero {
+            background: #f0f0f0;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .hero img {
+            max-width: 80%; /* Adjust the max-width as needed */
+            height: auto;
+            margin: 20px 0;
+        }
+
+        .hero h2 {
+            color: #4CAF50;
+        }
+
+        .feature {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .feature img {
+            max-width: 80%; /* Adjust the max-width as needed */
+            height: auto;
+            margin: 10px 0;
+        }
+
+        .feature h3 {
+            color: #4CAF50;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+{% endblock css %}
+
+{% block title %}Beautiful Page{% endblock title %}
+
+{% block body %}
+    <header>
+        <h1>Welcome to Smart Billing</h1>
+    </header>
+
+    <div class="hero">
+        <img src="https://source.unsplash.com/800x400/?nature,water" alt="Hero Image">
+        <h2>Your Trusted Partner for Efficient and Innovative Billing Solutions</h2>
+    </div>
+
+    <section>
+        <div class="feature">
+            <img src="https://source.unsplash.com/400x200/?technology" alt="Feature 1 Image">
+            <h3>Streamlined Billing</h3>
+            <p>Our advanced technology ensures streamlined billing processes, saving you time and resources.</p>
+        </div>
+
+        <div class="feature">
+            <img src="https://source.unsplash.com/400x200/?business" alt="Feature 2 Image">
+            <h3>Customer-Centric Approach</h3>
+            <p>We prioritize our clients, offering user-friendly solutions designed with your business in mind.</p>
+        </div>
+
+        <div class="feature">
+            <img src="https://source.unsplash.com/400x200/?security" alt="Feature 3 Image">
+            <h3>Secure and Reliable</h3>
+            <p>Trust Smart Billing for reliable and secure billing services, ensuring the integrity of your data.</p>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2024 Smart Billing. All rights reserved.
+    </footer>
+{% endblock body %}

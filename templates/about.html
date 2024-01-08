@@ -1,0 +1,51 @@
+{% extends "base2.html" %}
+{% block css %}
+{{ block.super }}
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+    header {
+        text-align: center;
+        padding: 20px;
+        background-color: #4CAF50;
+        color: white;
+    }
+    section {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+    }
+    h2 {
+        color: #4CAF50;
+    }
+    p {
+        line-height: 1.6;
+    }
+</style>{% endblock css %}
+{% block title %}about{% endblock title %}
+{% block body %}<section>
+    <h2>Our Mission</h2>
+    <p>We at Smart Billing are dedicated to providing innovative and efficient billing solutions to streamline your business processes. Our mission is to empower businesses with smart billing solutions that enhance productivity and accuracy.</p>
+
+    <h2>Who We Are</h2>
+    <p>Smart Billing is a team of passionate professionals with expertise in billing and automation technologies. We combine cutting-edge technology with a customer-centric approach to deliver solutions that meet the unique needs of our clients.</p>
+
+    <h2>What Sets Us Apart</h2>
+    <p>At Smart Billing, we stand out from the crowd with our commitment to excellence and continuous improvement. Here are some key factors that set us apart:</p>
+    <ul>
+        <li>Advanced Technology: We leverage the latest technologies to provide state-of-the-art billing solutions.</li>
+        <li>Customer Focus: Our solutions are designed with our clients in mind, ensuring a seamless and user-friendly experience.</li>
+        <li>Reliability: Trust is the foundation of our business. We are committed to delivering reliable and secure billing services.</li>
+    </ul>
+
+    <h2>Contact Us</h2>
+    <p>If you have any questions or inquiries, feel free to reach out to us:</p>
+    <address>
+        Email: <a href="smartbilling.com">info@smartbilling.com</a><br>
+        Phone: 91 6305563834
+    </address>
+</section>
+{% endblock body %}
+ 
